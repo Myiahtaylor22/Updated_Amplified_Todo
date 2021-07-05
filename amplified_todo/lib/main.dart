@@ -8,7 +8,7 @@ import 'package:amplify_datastore/amplify_datastore.dart';
 // amplify configuration and models that should have been generated for you
 import 'amplifyconfiguration.dart';
 import 'models/ModelProvider.dart';
-import 'models/Todo.dart';
+import 'models/UpdatedTodo.dart';
 
 void main() {
   runApp(MyApp());

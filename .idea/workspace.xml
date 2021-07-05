@@ -11,9 +11,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f680278c-2f9b-4751-86c7-ab5ca5367a5a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/UpdatedAmplifiedTodo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/amplified_todo/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/amplified_todo/lib/main.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
