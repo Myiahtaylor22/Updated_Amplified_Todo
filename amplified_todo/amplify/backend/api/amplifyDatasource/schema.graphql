@@ -1,0 +1,6 @@
+type UpdatedTodo @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  name: String!
+  description: String
+  isComplete: Boolean!
+}
