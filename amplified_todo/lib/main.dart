@@ -1,10 +1,13 @@
 // dart async library we will refer to when setting up real time updates
 import 'dart:async';
+
 // flutter and ui libraries
 import 'package:flutter/material.dart';
+
 // amplify packages we will need to use
 import 'package:amplify_flutter/amplify.dart';
 import 'package:amplify_datastore/amplify_datastore.dart';
+
 // amplify configuration and models that should have been generated for you
 import 'amplifyconfiguration.dart';
 import 'models/ModelProvider.dart';
@@ -30,7 +33,6 @@ class TodosPage extends StatefulWidget {
 }
 
 class _TodosPageState extends State<TodosPage> {
-
   // subscription to Todo model update events - to be initialized at runtime
   late StreamSubscription _subscription;
 
@@ -42,7 +44,7 @@ class _TodosPageState extends State<TodosPage> {
 
   // amplify plugins
   final AmplifyDataStore _dataStorePlugin =
-  AmplifyDataStore(modelProvider: ModelProvider.instance);
+      AmplifyDataStore(modelProvider: ModelProvider.instance);
 
   @override
   void initState() {
@@ -83,7 +85,6 @@ class _TodosPageState extends State<TodosPage> {
 
   Future<void> _configureAmplify() async {
     try {
-
       // add Amplify plugins
       await Amplify.addPlugins([_dataStorePlugin]);
 
@@ -92,7 +93,6 @@ class _TodosPageState extends State<TodosPage> {
       // note that Amplify cannot be configured more than once!
       await Amplify.configure(amplifyconfig);
     } catch (e) {
-
       // error handling can be improved for sure!
       // but this will be sufficient for the purposes of this tutorial
       print('An error occurred while configuring Amplify: $e');
@@ -101,7 +101,6 @@ class _TodosPageState extends State<TodosPage> {
 
   Future<void> _fetchTodos() async {
     try {
-
       // query for all Todo entries by passing the Todo classType to
       // Amplify.DataStore.query()
       List<Todo> updatedTodos = await Amplify.DataStore.query(Todo.classType);
@@ -121,10 +120,9 @@ class _TodosPageState extends State<TodosPage> {
       appBar: AppBar(
         title: Text('My Todo List'),
       ),
-      body: Center(child: CircularProgressIndicator()),
-       body: _isLoading
-           ? Center(child: CircularProgressIndicator())
-           : TodosList(todos: _todos),
+      body: _isLoading
+          ? Center(child: CircularProgressIndicator())
+          : TodosList(todos: _todos),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
@@ -151,8 +149,8 @@ class TodosList extends StatelessWidget {
   Widget build(BuildContext context) {
     return todos.length >= 1
         ? ListView(
-        padding: EdgeInsets.all(8),
-        children: todos.map((todo) => TodoItem(todo: todo)).toList())
+            padding: EdgeInsets.all(8),
+            children: todos.map((todo) => TodoItem(todo: todo)).toList())
         : Center(child: Text('Tap button below to add a todo!'));
   }
 }
@@ -177,7 +175,6 @@ class TodoItem extends StatelessWidget {
     // copy the Todo we wish to update, but with updated properties
     Todo updatedTodo = todo.copyWith(isComplete: !todo.isComplete);
     try {
-
       // to update data in DataStore, we again pass an instance of a model to
       // Amplify.DataStore.save()
       await Amplify.DataStore.save(updatedTodo);
@@ -205,7 +202,7 @@ class TodoItem extends StatelessWidget {
                 children: [
                   Text(todo.name,
                       style:
-                      TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                          TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                   Text(todo.description ?? 'No description'),
                 ],
               ),
@@ -273,7 +270,7 @@ class _AddTodoFormState extends State<AddTodoForm> {
               TextFormField(
                   controller: _descriptionController,
                   decoration:
-                  InputDecoration(filled: true, labelText: 'Description')),
+                      InputDecoration(filled: true, labelText: 'Description')),
               ElevatedButton(onPressed: _saveTodo, child: Text('Save'))
             ],
           ),
