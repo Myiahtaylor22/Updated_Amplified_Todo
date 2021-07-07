@@ -24,7 +24,7 @@ class ModelProvider implements ModelProviderInterface {
   @override
   String version = "7d469ac201c5e3a171366e9f4a0d9097";
   @override
-  List<ModelSchema> modelSchemas = [UpdatedTodo.schema];
+  List<ModelSchema> modelSchemas = [Todo.schema];
   static final ModelProvider _instance = ModelProvider();
 
   static ModelProvider get instance => _instance;
@@ -33,7 +33,7 @@ class ModelProvider implements ModelProviderInterface {
     switch (modelName) {
       case "UpdatedTodo":
         {
-          return UpdatedTodo.classType;
+          return Todo.classType;
         }
         break;
       default:
